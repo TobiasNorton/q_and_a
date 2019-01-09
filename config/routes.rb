@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     resources :answers
+    get '/api/questions/search'
   end
   namespace :api do
     resources :questions

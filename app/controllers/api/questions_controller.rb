@@ -8,6 +8,11 @@ class Api::QuestionsController < ApplicationController
     render json: @api_questions
   end
 
+  def search
+    header = params[:header]
+    render json: @api_questions = Api::Question.all.where("header ILIKE ?", "%#{:header}%")
+  end
+
   # GET /api/questions/1
   def show
     render json: @api_question
@@ -31,6 +36,9 @@ class Api::QuestionsController < ApplicationController
     else
       render json: @api_question.errors, status: :unprocessable_entity
     end
+  end
+
+  def upvote
   end
 
   # DELETE /api/questions/1
